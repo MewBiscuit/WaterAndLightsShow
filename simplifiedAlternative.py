@@ -18,7 +18,7 @@ def prepare_data(data, pump_val):
     vector_init += "type hardcodedPump is array(0 to " + str(len(pump_val)) + ") of integer;\n" \
                                                                               "variable pump : hardcodedPump := ("
     for i in range(len(pump_val)):
-        vector_init += str(pump_values[i]) + ", "
+        vector_init += str(pump_val[i]) + ", "
     vector_init += ");\n\n"
 
     return vector_init
@@ -43,7 +43,7 @@ def pump_values(data):
 
 
 def main():
-    file_path = ""
+    file_path = "audio1.mp3"
     data = data_extraction(file_path)
     pump = pump_values(data)
     code = prepare_data(data, pump)
