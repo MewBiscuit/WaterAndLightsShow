@@ -3,8 +3,10 @@ import numpy as np
 
 
 def data_extraction(file_path):
-    y, sr = librosa.load(file_path, sr=44100, mono=True, offset=0.0, duration=None, dtype=np.int8,
-                         res_type='kaiser_best')
+    y, sr = librosa.load(file_path, sr=44100, mono=True, offset=0.0, duration=None)
+
+    for i in range(len(y)):
+        y[i] //= 1
     return y
 
 
@@ -25,7 +27,7 @@ def prepare_data(data, pump_val):
 
 
 def write_data(code):
-    f = open("hardcodedSong.vhd", "w")
+    f = open("hardcode.vhd", "x")
     f.write(code)
     f.close()
     return 0
