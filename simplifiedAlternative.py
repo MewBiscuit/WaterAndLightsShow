@@ -37,13 +37,13 @@ def pump_values(data):
         avg = 0
         for j in range(4110):
             avg += data[i * 4110 + j]
-        avg /= 4110
+        avg //= 4110
         pump_val.append(avg)
     return pump_val
 
 
 def main():
-    file_path = "Songpath"
+    file_path = ""
     data = data_extraction(file_path)
     pump = pump_values(data)
     code = prepare_data(data, pump)
