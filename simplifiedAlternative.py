@@ -1,4 +1,5 @@
 import librosa
+import numpy as np
 
 
 def data_extraction(file_path):
@@ -12,19 +13,19 @@ def data_extraction(file_path):
 
 
 def prepare_data(data, pump_val):
-    vector_init = "type hardcodedSong is array(0 to " + str(len(data)) + ") of integer;\n" \
+    vector_init = "type hardcodedSong is array(0 to " + str(len(data)-1) + ") of integer;\n" \
                                                                          "variable song : hardcodedSong := ("
     for i in range(len(data)):
         vector_init += str(data[i]) + ", "
-        if(i%15 == 0):
+        if i % 15 == 0:
             vector_init += "\n"
     vector_init += ");\n\n"
 
-    vector_init += "type hardcodedPump is array(0 to " + str(len(pump_val)) + ") of integer;\n" \
+    vector_init += "type hardcodedPump is array(0 to " + str(len(pump_val)-1) + ") of integer;\n" \
                                                                               "variable pump : hardcodedPump := ("
     for i in range(len(pump_val)):
         vector_init += str(pump_val[i]) + ", "
-        if (i % 15 == 0):
+        if i % 15 == 0:
             vector_init += "\n"
     vector_init += ");\n\n"
 
@@ -40,16 +41,18 @@ def write_data(code):
 
 def pump_values(data):
     pump_val = []
-    for i in range((len(data) // 4110)):
+    for i in range((len(data) // 411)):
         avg = 0
-        for j in range(4110):
-            if data[i * 4110 + j] < 0:
-                avg += (-1*data[i * 4110 + j])
+        for j in range(411):
+            if data[i * 411 + j] < 0:
+                avg += (-1*data[i * 411 + j])
             else:
-                avg += data[i * 4110 + j]
-        avg //= 4110
+                avg += data[i * 411 + j]
+        avg //= 411
         #Adjust avg to a range from 0 to 255
         avg = (avg * 255) // 100000
+        #Make average an integer using numpy
+        avg = np.uint(avg)
         pump_val.append(avg)
     return pump_val
 
