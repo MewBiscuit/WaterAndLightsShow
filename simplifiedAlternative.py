@@ -1,12 +1,13 @@
 import librosa
-import numpy as np
 
 
 def data_extraction(file_path):
     y, sr = librosa.load(file_path, sr=44100, mono=True, offset=0.0, duration=None)
 
     for i in range(len(y)):
+        y[i] = int(y[i] * 100000)
         y[i] //= 1
+
     return y
 
 
@@ -15,12 +16,16 @@ def prepare_data(data, pump_val):
                                                                          "variable song : hardcodedSong := ("
     for i in range(len(data)):
         vector_init += str(data[i]) + ", "
+        if(i%15 == 0):
+            vector_init += "\n"
     vector_init += ");\n\n"
 
     vector_init += "type hardcodedPump is array(0 to " + str(len(pump_val)) + ") of integer;\n" \
                                                                               "variable pump : hardcodedPump := ("
     for i in range(len(pump_val)):
         vector_init += str(pump_val[i]) + ", "
+        if (i % 15 == 0):
+            vector_init += "\n"
     vector_init += ");\n\n"
 
     return vector_init
@@ -38,14 +43,19 @@ def pump_values(data):
     for i in range((len(data) // 4110)):
         avg = 0
         for j in range(4110):
-            avg += data[i * 4110 + j]
+            if data[i * 4110 + j] < 0:
+                avg += (-1*data[i * 4110 + j])
+            else:
+                avg += data[i * 4110 + j]
         avg //= 4110
+        #Adjust avg to a range from 0 to 255
+        avg = (avg * 255) // 100000
         pump_val.append(avg)
     return pump_val
 
 
 def main():
-    file_path = "audio1.mp3"
+    file_path = "audio1.wav"
     data = data_extraction(file_path)
     pump = pump_values(data)
     code = prepare_data(data, pump)
