@@ -23,32 +23,6 @@ This repository contains Python scripts for creating a mesmerizing water fountai
 - Python 3.6 or higher
 - FPGA board and compatible development environment
 - Water pumps, LED strips, and necessary hardware for fountain setup
-- Required Python packages (listed in `requirements.txt`)
-
-## Installation
-
-1. Clone the repository to your local machine 
-2. Navigate to the repository folder and install the required Python packages:
-```
-cd water-fountain-lights-music-show
-pip install -r requirements.txt
-```
-
-3. Configure your FPGA development environment and hardware according to the manufacturer's documentation.
-
-## Usage
-
-1. Customize the `config.py` file to match your hardware setup and desired show parameters.
-
-2. Run the `main.py` script to start the water fountain show:
-
-```
-python main.py --input /path/to/your/music/file
-```
-
-3. Enjoy the synchronized water, lights, and music show!
-
-For additional options and customization, see the script documentation or run `python main.py --help`.
 
 ## Contributing
 
