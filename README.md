@@ -5,9 +5,6 @@ This repository contains Python scripts for creating a mesmerizing water fountai
 ## Table of Contents
 
 - [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
