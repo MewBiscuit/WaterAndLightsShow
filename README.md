@@ -5,9 +5,7 @@ This repository contains Python scripts for creating a mesmerizing water fountai
 ## Table of Contents
 
 - [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
-
+- [Requirements](#requirements)
 ## Features
 
 - Real-time music feature extraction, including beat detection, tempo, and frequency analysis.
@@ -20,13 +18,5 @@ This repository contains Python scripts for creating a mesmerizing water fountai
 - Python 3.6 or higher
 - FPGA board and compatible development environment
 - Water pumps, LED strips, and necessary hardware for fountain setup
-
-## Contributing
-
-We welcome contributions to improve this project. Please submit a pull request with your changes, or open an issue if you find any bugs or have suggestions for improvements.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 
