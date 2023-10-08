@@ -58,7 +58,7 @@ def pump_values(data):
 
 
 def main():
-    file_path = "audio1.wav"
+    file_path = "Songpath"
     data = data_extraction(file_path)
     pump = pump_values(data)
     code = prepare_data(data, pump)
